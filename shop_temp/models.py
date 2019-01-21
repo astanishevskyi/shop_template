@@ -13,8 +13,8 @@ class Category(models.Model):
         return self.name
 
 
-def get_absolute_url(self):
-    return reverse('category_detail', kwargs={'category_slug': self.slug})
+    def get_absolute_url(self):
+        return reverse('category_detail', kwargs={'category_slug': self.slug})
 
 
 def pre_save_category_slug(sender, instance, *args, **kwargs):
@@ -58,8 +58,9 @@ class Product(models.Model):
         return self.title
 
 
-pre_save.connect(pre_save_category_slug, sender=Category)
+    pre_save.connect(pre_save_category_slug, sender=Category)
 
 
-def get_absolute_url(self):
-    return reverse('product_detail', kwargs={'product_slug': self.slug})
+    def get_absolute_url(self):
+        return reverse('product_detail', kwargs={'product_slug': self.slug})
+
